@@ -1,0 +1,184 @@
+* {
+    font-family: IDFVoyageur;
+    font-weight: normal;
+    margin:  0;
+    font-size: 16px;
+    color: #163767;
+}
+
+body {
+    padding: 2% 5% 5% 5%;
+}
+
+@font-face {
+    font-family: IDFVoyageur;
+    src: url(fonts/IDFVoyageur-Regular.otf);
+  }
+  
+  @font-face {
+    font-family: IDFVoyageur-bold;
+    src: url(fonts/IDFVoyageur-Bold.otf);
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: IDFVoyageur-medium;
+    src: url(fonts/IDFVoyageur-Medium.otf);
+    font-weight: 50;
+  }
+  
+footer {
+    background-color: #163767;
+    color: white;
+    height: 215px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("img/exclamation.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    display: block;
+}
+
+footer p {
+    color: white !important;
+    font-size: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 1%;
+    height: 30%;
+    margin-top: 4.5%;
+    width: 85%;
+}
+
+footer img#indice_ligne {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30%;
+    margin-top: 4.5%;
+    margin-left: 4%;
+}
+
+h2 {
+    color: #163767;
+    font-size: 42px;
+    font-weight: bold;
+    font-family: IDFVoyageur-bold;
+}
+
+.affichage {
+    display: block;
+}
+
+
+.ligne {
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.ligne img#indice_ligne {
+    display: block;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.destination {
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    height: 100%;
+}
+
+.panel {
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block;
+    height: 50px;
+}
+
+.destination .panel {
+    background-color: #163767;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.temps .panel {
+    background-color: #D9D9D9;
+    color: #163767;
+    width: 150px;
+    display: inline-block;
+    margin: 0px 4px 0px 4px;
+}
+
+.destination .panel p {
+    color: white;
+    font-size: 35px;
+    font-family: IDFVoyageur-bold;
+}
+
+.temps .panel p {
+    color: #163767;;
+    font-size: 35px;
+    font-family: IDFVoyageur-bold;
+}
+
+.temps {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    height: 100%;
+}
+
+.trafic {
+    display: inline-block;
+    width: 14%;
+    text-align: center;
+    height: 100%;
+    vertical-align: top;
+}
+
+.trafic img.status {
+    width: 90px;
+    display: block;
+    max-width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.line {
+    margin-top: 70px;
+}
+
+.panel#bus {
+    height: 20px !important;
+    display: inline-table;
+    padding: 7px;
+}
+
+.panel#bus p {
+    vertical-align: middle;
+}
+
+.ligne img#indice_bus {
+    display: block;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
+
+.trafic img.status#bus {
+    width: 90px;
+    display: block;
+    max-width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
