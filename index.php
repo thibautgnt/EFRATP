@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <meta http-equiv="refresh" content="50" >
+  <meta http-equiv="refresh" content="60" >
 
 </head>
 
