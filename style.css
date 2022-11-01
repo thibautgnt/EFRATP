@@ -78,7 +78,7 @@ h3.time {
 
 h2 {
     color: #163767;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: bold;
     font-family: IDFVoyageur-bold;
 }
@@ -223,6 +223,7 @@ h2 {
 
 .bus#two {
     justify-content: right;
+    margin-right: 5%;
 }
 
 .indicebus {
