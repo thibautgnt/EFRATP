@@ -30,7 +30,7 @@ body {
 footer {
     background-color: #163767;
     color: white;
-    height: 215px;
+    height: 22%;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -39,31 +39,46 @@ footer {
     background-image: url("img/exclamation.png");
     background-repeat: no-repeat;
     background-position: bottom left;
-    display: block;
-}
-
-footer p {
-    color: white !important;
-    font-size: 40px;
-    display: inline-block;
-    vertical-align: middle;
-    padding-left: 1%;
-    height: 30%;
-    margin-top: 4.5%;
-    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 footer img#indice_ligne {
-    display: inline-block;
     vertical-align: middle;
-    height: 30%;
-    margin-top: 4.5%;
-    margin-left: 4%;
+    width: 8%;
+    padding: 1%;
+    padding-left: 3%;
+}
+
+footer p {
+    margin-left: 20px;
+    color: white;
+    font-size: 1.7vw;
+    width: 85%;
+}
+
+.infotrafic {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 75px;
+}
+
+.heure {
+    width: 14%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+h3.time {
+    color: white;
+    font-size: 1.7vw;
+    vertical-align: middle;
 }
 
 h2 {
     color: #163767;
-    font-size: 42px;
+    font-size: 2vw;
     font-weight: bold;
     font-family: IDFVoyageur-bold;
 }
@@ -82,9 +97,10 @@ h2 {
 
 .ligne img#indice_ligne {
     display: block;
-    height: 90px;
+    height: 82px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 80%;
 }
 
 .destination {
@@ -98,7 +114,7 @@ h2 {
     border-radius: 10px;
     padding: 20px;
     display: inline-block;
-    height: 50px;
+    height: auto;
 }
 
 .destination .panel {
@@ -119,13 +135,13 @@ h2 {
 
 .destination .panel p {
     color: white;
-    font-size: 35px;
+    font-size: 1.8vw;
     font-family: IDFVoyageur-bold;
 }
 
 .temps .panel p {
     color: #163767;;
-    font-size: 35px;
+    font-size: 1.8vw;
     font-family: IDFVoyageur-bold;
 }
 
@@ -145,22 +161,18 @@ h2 {
 }
 
 .trafic img.status {
-    width: 90px;
+    width: 82px;
     display: block;
     max-width: 90px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 70%;
 }
 
 .line {
     margin-top: 70px;
 }
 
-.panel#bus {
-    height: 20px !important;
-    display: inline-table;
-    padding: 7px;
-}
 
 .panel#bus p {
     vertical-align: middle;
@@ -172,13 +184,95 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     padding-top: 15px;
+    margin-left: 5%;
 }
 
-.trafic img.status#bus {
-    width: 90px;
-    display: block;
-    max-width: 90px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 15px;
+.panel#bus {
+    background-color: #163767;
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    width: 70%;
+    margin-left: 5%;
+    padding: 2.5%;
 }
+
+.tempsbus {
+    background-color: #D9D9D9;
+    display: inline-table;
+    padding: 2.5%;
+    width: 10%;
+    border-radius: 10%;
+    font-size: 1.5vw;
+    font-family: IDFVoyageur-bold;
+    text-align: center;
+    vertical-align: top;
+}
+
+.bus {
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.bus#one {
+    justify-content: left;
+}
+
+.bus#two {
+    justify-content: right;
+}
+
+.indicebus {
+    width: auto;
+    margin-left: 5%;
+}
+
+.left {
+    width: 70%;
+}
+
+.max-bus {
+    width: 49%;
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+
+
+.vwrap, .vslide {
+    box-sizing: border-box;
+    width: 90%;
+    height: 100px;
+  }
+   
+  .vwrap {
+
+    overflow: hidden; 
+  }
+   
+
+  .vmove {
+    position: relative;
+    bottom: 0%;
+  }
+   
+  .vslide { padding: 20px; }
+  
+
+  @keyframes slidev {
+
+    0% { bottom: 0; }
+    30% { bottom: 0; }
+    33% { bottom: 100%; }
+    63% { bottom: 100%; }
+    66% { bottom: 100%; }
+    97% { bottom: 100%; }
+    100% { right: 0; }
+  }
+  .vmove { animation: slidev linear 15s infinite; }
