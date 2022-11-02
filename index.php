@@ -241,7 +241,7 @@ x1 = "<h3 class='time'>" + x.getHours( )+ ":" +  x.getMinutes() + '</h3>';
 document.getElementById('ct').innerHTML = x1;
 var refresh=5000; // Refresh rate in milli seconds
 mytime=setTimeout('display_ct()',refresh)
-display_c();
+display_ct();
  }
 </script>
 
@@ -293,7 +293,7 @@ display_c();
 
   <div class="vslide">
     <p>
-  <img src="img/qr.png" id="indice_ligne" style="width: 6%;">
+  <img src="img/qr.png" id="indice_ligne" style="width: 70px;">
         Scannez le code pour en savoir plus</p>
   </div>
   
