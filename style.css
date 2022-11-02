@@ -272,8 +272,9 @@ h2 {
     30% { bottom: 0; }
     33% { bottom: 100%; }
     63% { bottom: 100%; }
-    66% { bottom: 100%; }
-    97% { bottom: 100%; }
+    66% { bottom: 200%; }
+    97% { bottom: 200%; }
     100% { right: 0; }
   }
-  .vmove { animation: slidev linear 15s infinite; }
+
+  .vmove { animation: slidev linear 20s infinite; }

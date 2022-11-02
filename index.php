@@ -49,31 +49,25 @@
             </div>
             <div class="temps">
             <div class="panel"><p><?php
-                if (($M7['nextDepartures']['statusCode']) == 404) {
+                if ((($M7['nextDepartures']['statusCode']) == 404) or empty($M7['nextDepartures']['data'][0]['time'])) {
                     echo '-';
                 }
                 else {
-                    if (($M7['nextDepartures']['data'][0]['time']) <= 5) {
-                        echo ($M7['nextDepartures']['data'][1]['time']);
-                    }
-                    else {
+
                         echo ($M7['nextDepartures']['data'][0]['time']);
                     }
-                }
+                
             ?></p></div>
                 <div class="panel"><p>
                 <?php
-                if (($M7['nextDepartures']['statusCode']) == 404) {
+                if ((($M7['nextDepartures']['statusCode']) == 404) or empty($M7['nextDepartures']['data'][1]['time'])) {
                     echo '-';
                 }
                 else {
-                    if (($M7['nextDepartures']['data'][0]['time']) <= 5) {
-                        echo ($M7['nextDepartures']['data'][2]['time']);
-                    }
-                    else {
+
                         echo ($M7['nextDepartures']['data'][1]['time']);
                     }
-                }
+                
             ?>
             </p></div>
             </div>
@@ -169,7 +163,7 @@
             ?>
             </div>
                 <div class="tempsbus"><?php
-                if ((($BUS172['nextDepartures']['statusCode']) != 404) or (!empty($BUS172['nextDepartures']['data'][0]['lineDirection']))) {
+                if ((($BUS172['nextDepartures']['statusCode']) != 404)) {
                     echo ($BUS172['nextDepartures']['data'][0]['time']);
                 }
                 else { echo '-';}
@@ -183,10 +177,13 @@
                 }
             ?></div>
                 <div class="tempsbus"><?php
-                if ((($BUS172['nextDepartures']['statusCode']) != 404) or (!empty($BUS172['nextDepartures']['data'][1]['time']))) {
-                    echo ($BUS172['nextDepartures']['data'][1]['time']);
+                if ((($BUS172['nextDepartures']['statusCode']) == 404) or (sizeof($BUS172['nextDepartures']['data']) < 2)) {
+                    echo '-';
                 }
-                else { echo '-';}
+                else { 
+                    
+                    echo ($BUS172['nextDepartures']['data'][1]['time']);
+                  }
                 ?></div>
             </div>
         </div>
@@ -208,7 +205,7 @@
             ?>
             </div>
                 <div class="tempsbus"><?php
-                if ((($BUS380['nextDepartures']['statusCode']) != 404) or (!empty($BUS380['nextDepartures']['data'][0]['lineDirection']))) {
+                if ((($BUS380['nextDepartures']['statusCode']) != 404)) {
                     echo ($BUS380['nextDepartures']['data'][0]['time']);
                 }
                 else { echo '-';}
@@ -222,10 +219,13 @@
                 }
             ?></div>
                 <div class="tempsbus"><?php
-                if ((($BUS380['nextDepartures']['statusCode']) != 404) or (!empty($BUS380['nextDepartures']['data'][1]['time']))) {
-                    echo ($BUS380['nextDepartures']['data'][1]['time']);
+                if ((($BUS380['nextDepartures']['statusCode']) == 404) or (sizeof($BUS380['nextDepartures']['data']) < 2)) {
+                    echo '-';
                 }
-                else { echo '-';}
+                else { 
+                    
+                    echo ($BUS380['nextDepartures']['data'][1]['time']);
+                  }
                 ?></div>
             </div>
         </div>
@@ -239,7 +239,7 @@ var x = new Date()
 var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
 x1 = "<h3 class='time'>" + x.getHours( )+ ":" +  x.getMinutes() + '</h3>';
 document.getElementById('ct').innerHTML = x1;
-var refresh=1000; // Refresh rate in milli seconds
+var refresh=5000; // Refresh rate in milli seconds
 mytime=setTimeout('display_ct()',refresh)
 display_c();
  }
@@ -253,24 +253,7 @@ display_c();
     
 
     <div class="vwrap"><div class="vmove">
-  <div class="vslide">
-    <p>
-  <img src="img/m7.svg" id="indice_ligne">
-        <?php
-
-        if ((($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == false))
-            {
-                echo 'Trafic fluide sur l\'ensemble de la ligne. ' ;
-            }
-        elseif (($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == true){
-            echo ($trafic['allPerturbationsByLine'][20]['currentDisruptions'][0]['title']);
-            }
-        else {
-            echo 'Problème lors de la réccupération des informations trafic.';
-        }
-        ?></p>
-  </div>
-  <div class="vslide">
+    <div class="vslide">
     <p>
   <img src="img/t7.svg" id="indice_ligne">
         <?php
@@ -288,6 +271,32 @@ display_c();
         ?>
         </p>
   </div>
+
+
+  <div class="vslide">
+    <p>
+  <img src="img/m7.svg" id="indice_ligne">
+        <?php
+
+        if ((($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == false))
+            {
+                echo 'Trafic fluide sur l\'ensemble de la ligne. ' ;
+            }
+        elseif (($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == true){
+            echo ($trafic['allPerturbationsByLine'][20]['currentDisruptions'][0]['title']);
+            }
+        else {
+            echo 'Problème lors de la réccupération des informations trafic.';
+        }
+        ?></p>
+  </div>
+
+  <div class="vslide">
+    <p>
+  <img src="img/qr.png" id="indice_ligne" style="width: 6%;">
+        Scannez le code pour en savoir plus</p>
+  </div>
+  
 
 </div></div>
 
