@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-<meta http-equiv="refresh" content="40" >
+    <meta http-equiv="refresh" content="30" >
 
 </head>
 <body onload=display_ct();>
@@ -40,7 +40,7 @@
             <div class="destination">
                 <div class="panel"><p><?php
                 if (($M7['nextDepartures']['statusCode']) == 404) {
-                    echo 'Fin de service';
+                    echo 'Fin / Pas de service';
                 }
                 else {
                     echo ($M7['nextDepartures']['data'][0]['lineDirection']); 
@@ -49,8 +49,11 @@
             </div>
             <div class="temps">
             <div class="panel"><p><?php
-                if ((($M7['nextDepartures']['statusCode']) == 404) or empty($M7['nextDepartures']['data'][0]['time'])) {
+                if ((($M7['nextDepartures']['statusCode']) == 404) or (sizeof($M7['nextDepartures']['data']) < 1)) {
                     echo '-';
+                }
+                elseif (($M7['nextDepartures']['data'][0]['time']) == 0) {
+                    echo '<p class="clignote">Départ</p>';
                 }
                 else {
 
@@ -60,7 +63,7 @@
             ?></p></div>
                 <div class="panel"><p>
                 <?php
-                if ((($M7['nextDepartures']['statusCode']) == 404) or empty($M7['nextDepartures']['data'][1]['time'])) {
+                if ((($M7['nextDepartures']['statusCode']) == 404) or (sizeof($M7['nextDepartures']['data']) < 2)) {
                     echo '-';
                 }
                 else {
@@ -74,17 +77,25 @@
             <div class="trafic">
                 <?php
                     if (($M7['nextDepartures']['statusCode']) != 404) {
-                        if (($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == false) {
-                            echo '<img src="img/ok.svg" class="status">';
+
+                        if (array_key_exists(7, $trafic2['metro'])) {
+                            if ($trafic2['metro'][7]['level'] == "alert") {
+                                echo '<img src="img/retard.svg" class="status">';
+                            }
+                            elseif ($trafic2['metro'][7]['level'] == "critical") {
+                                echo '<img src="img/danger.svg" class="status">';
+                            }
+                            else {echo '<img src="img/info.svg" class="status">';}
                         }
-                        else {
-                            echo '<img src="img/retard.svg" class="status">';
-                        }   
+                        else {echo '<img src="img/ok.svg" class="status">';}
                     }
+
                     else {
                         echo '<img src="img/danger.svg" class="status">';
                     }
                 ?>
+
+
             </div>
         </div>
         <div class="line">
@@ -94,7 +105,7 @@
             <div class="destination">
                 <div class="panel"><p><?php
                 if (($T7['nextDepartures']['statusCode']) == 404) {
-                    echo 'Fin de service';
+                    echo 'Fin / Pas de service';
                 }
                 else {
                     echo ($T7['nextDepartures']['data'][0]['lineDirection']); 
@@ -103,37 +114,46 @@
             </div>
             <div class="temps">
                 <div class="panel"><p><?php
-                if ((($T7['nextDepartures']['statusCode']) == 404) or empty($T7['nextDepartures']['data'][0]['time'])) {
+                if ((($T7['nextDepartures']['statusCode']) == 404) or (sizeof($T7['nextDepartures']['data']) < 1)) {
                     echo '-';
                 }
-                else {
-                    
-                        echo ($T7['nextDepartures']['data'][0]['time']);
-
+                elseif (($T7['nextDepartures']['data'][0]['time']) == 0) {
+                    echo '<p class="clignote">Départ</p>';
                 }
+                else {
+
+                        echo ($T7['nextDepartures']['data'][0]['time']);
+                    }
+                
             ?></p></div>
                 <div class="panel"><p>
                 <?php
-                if ((($T7['nextDepartures']['statusCode']) == 404) or empty($T7['nextDepartures']['data'][1]['time'])) {
+                if ((($T7['nextDepartures']['statusCode']) == 404) or (sizeof($T7['nextDepartures']['data']) < 2)) {
                     echo '-';
                 }
                 else {
-                    
+
                         echo ($T7['nextDepartures']['data'][1]['time']);
-                   
-                }
+                    }
+                
             ?></p></div>
             </div>
             <div class="trafic">
             <?php
                     if (($T7['nextDepartures']['statusCode']) != 404) {
-                        if (($trafic['allPerturbationsByLine'][37]['hasTrafficDisruptions']) == false) {
-                            echo '<img src="img/ok.svg" class="status">';
+
+                        if (array_key_exists('T7', $trafic2['tram'])) {
+                            if ($trafic2['tram']['T7']['level'] == "alert") {
+                                echo '<img src="img/retard.svg" class="status">';
+                            }
+                            elseif ($trafic2['tram']['T7']['level'] == "critical") {
+                                echo '<img src="img/danger.svg" class="status">';
+                            }
+                            else {echo '<img src="img/info.svg" class="status">';}
                         }
-                        else {
-                            echo '<img src="img/retard.svg" class="status">';
-                        }   
+                        else {echo '<img src="img/ok.svg" class="status">';}
                     }
+
                     else {
                         echo '<img src="img/danger.svg" class="status">';
                     }
@@ -143,8 +163,9 @@
     </div>
 
 
-    <hr style="margin-top: 55px; margin-bottom:-25px; border:0.1px solid #D9D9D9;">
-<br /><br /><br /><br />
+    <hr style="margin-top: 75px; margin-bottom:45px; border:0.1px solid #D9D9D9;">
+
+    
 <div class="block">
     <div class="max-bus">
         <div class="bus" id="one">
@@ -155,7 +176,7 @@
                 <div class="panel" id="bus" style="margin-bottom: 10px;">
                 <?php
                 if ((($BUS172['nextDepartures']['statusCode']) == 404) or (empty($BUS172['nextDepartures']['data'][0]['lineDirection']))) {
-                    echo 'Fin de service';
+                    echo 'Fin / Pas de service';
                 }
                 else {
                     echo ($BUS172['nextDepartures']['data'][0]['lineDirection']); 
@@ -170,7 +191,7 @@
                 ?></div>
                 <div class="panel" id="bus"><?php
                 if ((($BUS172['nextDepartures']['statusCode']) == 404) or (empty($BUS172['nextDepartures']['data'][1]['lineDirection']))) {
-                    echo 'Fin de service';
+                    echo 'Fin / Pas de service';
                 }
                 else {
                     echo ($BUS172['nextDepartures']['data'][1]['lineDirection']); 
@@ -187,7 +208,7 @@
                 ?></div>
             </div>
         </div>
-        <p style="margin-left:19.5%">Prochains passages à l'arrêt "Auguste Delaune"</p>
+        <p style="margin-left:20.5%">Prochains passages à l'arrêt "Auguste Delaune"</p>
     </div>
     <div class="max-bus">
         <div class="bus" id="two">
@@ -197,7 +218,7 @@
             <div class="left">
                 <div class="panel" id="bus" style="margin-bottom: 10px;"><?php
                 if ((($BUS380['nextDepartures']['statusCode']) == 404) or (empty($BUS380['nextDepartures']['data'][0]['lineDirection']))) {
-                    echo 'Fin de service';
+                    echo 'Fin / Pas de service';
                 }
                 else {
                     echo ($BUS380['nextDepartures']['data'][0]['lineDirection']); 
@@ -212,7 +233,7 @@
                 ?></div>
                 <div class="panel" id="bus"><?php
                 if ((($BUS380['nextDepartures']['statusCode']) == 404) or (empty($BUS380['nextDepartures']['data'][1]['lineDirection']))) {
-                    echo 'Fin de service';
+                    echo 'Fin / Pas de service';
                 }
                 else {
                     echo ($BUS380['nextDepartures']['data'][1]['lineDirection']); 
@@ -233,15 +254,15 @@
     </div>
 </div>
 
-    <script type="text/javascript"> 
+<script type="text/javascript"> 
 function display_ct() {
 var x = new Date()
 var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
 x1 = "<h3 class='time'>" + x.getHours( )+ ":" +  x.getMinutes() + '</h3>';
 document.getElementById('ct').innerHTML = x1;
-var refresh=5000; // Refresh rate in milli seconds
+var refresh=1000; // Refresh rate in milli seconds
 mytime=setTimeout('display_ct()',refresh)
-display_ct();
+display_c();
  }
 </script>
 
@@ -256,18 +277,22 @@ display_ct();
     <div class="vslide">
     <p>
   <img src="img/t7.svg" id="indice_ligne">
-        <?php
-
-        if ((($trafic['allPerturbationsByLine'][37]['hasTrafficDisruptions']) == false))
+  <?php
+        if (($T7['nextDepartures']['statusCode']) != 404) 
             {
-                echo 'Trafic fluide sur l\'ensemble de la ligne.' ;
-            }
-        elseif (($trafic['allPerturbationsByLine'][37]['hasTrafficDisruptions']) == true){
-            echo ($trafic['allPerturbationsByLine'][37]['currentDisruptions'][0]['title']);
+                if (array_key_exists('T7', $trafic2['tram']))
+                    {
+                        echo ($trafic2['tram']['T7']['message']);
+                    }
+                elseif (!array_key_exists(7, $trafic2['tram'])) {
+                    echo "Trafic fluide sur l'ensemble de la ligne";
+                }
+
+                else {echo 'Problème lors de la réccupération des informations trafic / Fin de service.';}
             }
         else {
-            echo 'Problème lors de la réccupération des informations trafic.';
-        }
+            echo 'Fin de service';
+            }
         ?>
         </p>
   </div>
@@ -277,42 +302,37 @@ display_ct();
     <p>
   <img src="img/m7.svg" id="indice_ligne">
         <?php
-
-        if ((($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == false))
+        if (($M7['nextDepartures']['statusCode']) != 404) 
             {
-                echo 'Trafic fluide sur l\'ensemble de la ligne. ' ;
-            }
-        elseif (($trafic['allPerturbationsByLine'][20]['hasTrafficDisruptions']) == true){
-            echo ($trafic['allPerturbationsByLine'][20]['currentDisruptions'][0]['title']);
+                if (array_key_exists(7, $trafic2['metro']))
+                    {
+                        echo ($trafic2['metro']['7']['message']);
+                    }
+                elseif (!array_key_exists(7, $trafic2['metro'])) {
+                    echo "Trafic fluide sur l'ensemble de la ligne";
+                }
+
+                else {echo 'Problème lors de la réccupération des informations trafic / Fin de service.';}
             }
         else {
-            echo 'Problème lors de la réccupération des informations trafic.';
-        }
-        ?></p>
+            echo 'Fin de service';
+            }
+        ?>
+        </p>
   </div>
 
   <div class="vslide">
     <p>
-  <img src="img/qr.png" id="indice_ligne" style="width: 70px;">
-        Scannez le code pour en savoir plus</p>
+  <img src="img/qr.svg" id="indice_ligne" style="width: 70px;">
+        < Scannez le code pour avoir l'info trafic de toutes les lignes</p>
   </div>
   
 
 </div></div>
 
 
-
-    
-
-
-
-        
         <span style="vertical-align: middle;display: flex;align-items: center;" id='ct'></span>
     </div>
 </footer>
 
-
-<script>
-
-</script>
 </html>

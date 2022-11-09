@@ -22,5 +22,11 @@ $url3 = 'https://www.transilien.com/api/traffic/infos';
 $data3 = file_get_contents($url3); 
 $trafic = json_decode($data3,true);
 
+$url6 = 'https://www.ratp.fr/horaires/api/getTrafficEvents';
+$data6 = file_get_contents($url6); 
+$trafic2 = json_decode($data6,true);
+
+
+
 
 ?>

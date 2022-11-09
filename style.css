@@ -30,7 +30,7 @@ body {
 footer {
     background-color: #163767;
     color: white;
-    height: 22%;
+    height: 18%;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -46,16 +46,22 @@ footer {
 
 footer img#indice_ligne {
     vertical-align: middle;
-    width: 8%;
-    padding: 1%;
-    padding-left: 3%;
+    width: 7.5%;
+    padding-right: 1%;
+    padding-left: 2.7%;
 }
 
 footer p {
     margin-left: 20px;
     color: white;
-    font-size: 1.7vw;
-    width: 85%;
+    font-size: 1.4vw;
+    width: 100%;
+}
+
+a {
+    color: white;
+    font-size: 1.4vw;
+    text-decoration: none;
 }
 
 .infotrafic {
@@ -219,6 +225,7 @@ h2 {
 
 .bus#one {
     justify-content: left;
+    margin-left: 2%;
 }
 
 .bus#two {
@@ -278,3 +285,36 @@ h2 {
   }
 
   .vmove { animation: slidev linear 20s infinite; }
+
+
+  .clignote {
+    animation: clignote 3s linear infinite;
+  }
+  @keyframes clignote {  
+    50% { opacity: 0.3; }
+  }
+
+
+  @media (max-width: 1350px) { 
+
+.ligne {
+    width: 100%;
+    display: block;
+}
+
+.temps {
+    width: 100%;
+    display: block;
+}
+
+.trafic {
+    width: 100%;
+    display: block;
+}
+
+.destination {
+    width: 100%;
+    display: block;
+}
+
+}
