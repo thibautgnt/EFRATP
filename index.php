@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-    <meta http-equiv="refresh" content="30" >
+<meta http-equiv="refresh" content="60" >
 
 </head>
 <body onload=display_ct();>
@@ -77,7 +77,7 @@
             <div class="trafic">
                 <?php
                     if (($M7['nextDepartures']['statusCode']) != 404) {
-
+                        if (array_key_exists('metro', $trafic2)) {
                         if (array_key_exists(7, $trafic2['metro'])) {
                             if ($trafic2['metro'][7]['level'] == "alert") {
                                 echo '<img src="img/retard.svg" class="status">';
@@ -89,10 +89,15 @@
                         }
                         else {echo '<img src="img/ok.svg" class="status">';}
                     }
+                    else {
+                        echo '<img src="img/ok.svg" class="status">';
+                    } 
+                }
 
                     else {
                         echo '<img src="img/danger.svg" class="status">';
                     }
+                
                 ?>
 
 
@@ -104,59 +109,27 @@
             </div>
             <div class="destination">
                 <div class="panel"><p><?php
-                if (($T7['nextDepartures']['statusCode']) == 404) {
-                    echo 'Fin / Pas de service';
-                }
-                else {
-                    echo ($T7['nextDepartures']['data'][0]['lineDirection']); 
-                }
+                include 'test/passages.php';
+                
+                echo 'Porte de l\'Essonne';
+
             ?></p></div>
             </div>
             <div class="temps">
                 <div class="panel"><p><?php
-                if ((($T7['nextDepartures']['statusCode']) == 404) or (sizeof($T7['nextDepartures']['data']) < 1)) {
-                    echo '-';
-                }
-                elseif (($T7['nextDepartures']['data'][0]['time']) == 0) {
-                    echo '<p class="clignote">Départ</p>';
-                }
-                else {
-
-                        echo ($T7['nextDepartures']['data'][0]['time']);
-                    }
+                echo $tempsrestant[0];
                 
             ?></p></div>
-                <div class="panel"><p>
-                <?php
-                if ((($T7['nextDepartures']['statusCode']) == 404) or (sizeof($T7['nextDepartures']['data']) < 2)) {
-                    echo '-';
-                }
-                else {
-
-                        echo ($T7['nextDepartures']['data'][1]['time']);
-                    }
+                <div class="panel"><p><?php 
+                echo $tempsrestant[1];
                 
             ?></p></div>
             </div>
             <div class="trafic">
             <?php
-                    if (($T7['nextDepartures']['statusCode']) != 404) {
-
-                        if (array_key_exists('T7', $trafic2['tram'])) {
-                            if ($trafic2['tram']['T7']['level'] == "alert") {
-                                echo '<img src="img/retard.svg" class="status">';
-                            }
-                            elseif ($trafic2['tram']['T7']['level'] == "critical") {
-                                echo '<img src="img/danger.svg" class="status">';
-                            }
-                            else {echo '<img src="img/info.svg" class="status">';}
-                        }
-                        else {echo '<img src="img/ok.svg" class="status">';}
-                    }
-
-                    else {
-                        echo '<img src="img/danger.svg" class="status">';
-                    }
+   
+                        echo '<img src="img/ok.svg" class="status">';
+                    
                 ?>
             </div>
         </div>
@@ -278,21 +251,9 @@ display_c();
     <p>
   <img src="img/t7.svg" id="indice_ligne">
   <?php
-        if (($T7['nextDepartures']['statusCode']) != 404) 
-            {
-                if (array_key_exists('T7', $trafic2['tram']))
-                    {
-                        echo ($trafic2['tram']['T7']['message']);
-                    }
-                elseif (!array_key_exists(7, $trafic2['tram'])) {
+        
                     echo "Trafic fluide sur l'ensemble de la ligne";
-                }
 
-                else {echo 'Problème lors de la réccupération des informations trafic / Fin de service.';}
-            }
-        else {
-            echo 'Fin de service';
-            }
         ?>
         </p>
   </div>
@@ -304,6 +265,7 @@ display_c();
         <?php
         if (($M7['nextDepartures']['statusCode']) != 404) 
             {
+                if (array_key_exists('metro', $trafic2)) {
                 if (array_key_exists(7, $trafic2['metro']))
                     {
                         echo ($trafic2['metro']['7']['message']);
@@ -314,9 +276,13 @@ display_c();
 
                 else {echo 'Problème lors de la réccupération des informations trafic / Fin de service.';}
             }
+        
+            else { echo "Trafic fluide sur l'ensemble de la ligne";}
+        }
         else {
             echo 'Fin de service';
             }
+    
         ?>
         </p>
   </div>

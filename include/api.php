@@ -6,9 +6,9 @@ $url = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01377/stops/
 $data = file_get_contents($url); 
 $M7 = json_decode($data,true);
 
-$url2 = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01774/stops/stop_area:IDFM:70143/realTime';
+/*$url2 = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01774/stops/stop_area:IDFM:70143/realTime';
 $data2 = file_get_contents($url2); 
-$T7 = json_decode($data2,true);
+$T7 = json_decode($data2,true);*/
 
 $url4 = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01193/stops/stop_area:IDFM:70140/realTime';
 $data4 = file_get_contents($url4); 
