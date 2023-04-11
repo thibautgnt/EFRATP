@@ -6,9 +6,9 @@ $url = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01377/stops/
 $data = file_get_contents($url); 
 $M7 = json_decode($data,true);
 
-$url2 = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01774/stops/stop_area:IDFM:70143/realTime';
+/*$url2 = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01774/stops/stop_area:IDFM:70143/realTime';
 $data2 = file_get_contents($url2); 
-$T7 = json_decode($data2,true);
+$T7 = json_decode($data2,true);*/
 
 $url4 = 'https://api-iv.iledefrance-mobilites.fr/lines/v2/line:IDFM:C01193/stops/stop_area:IDFM:70140/realTime';
 $data4 = file_get_contents($url4); 
@@ -21,6 +21,12 @@ $BUS380 = json_decode($data5,true);
 $url3 = 'https://www.transilien.com/api/traffic/infos';
 $data3 = file_get_contents($url3); 
 $trafic = json_decode($data3,true);
+
+$url6 = 'https://www.ratp.fr/horaires/api/getTrafficEvents';
+$data6 = file_get_contents($url6); 
+$trafic2 = json_decode($data6,true);
+
+
 
 
 ?>

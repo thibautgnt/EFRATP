@@ -1,0 +1,142 @@
+* {
+    font-family: IDFVoyageur;
+    font-weight: normal;
+    margin:  0;
+    font-size: 16px;
+    color: #163767;
+}
+
+@font-face {
+    font-family: IDFVoyageur;
+    src: url(fonts/IDFVoyageur-Regular.otf);
+  }
+
+header {
+    background-color: #163767;
+    color: white;
+    height: 100px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("img/exclamation.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
+
+header h1 {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    background-color: rgba(233, 233, 233, 0.747);
+    margin: 5%;
+    border-radius: 5px;
+    padding: 3%;
+}
+
+h2 {
+    font-size: 27px;
+    vertical-align: middle;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+h4 {
+    font-size: 21px;
+}
+
+hr {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 0.5px solid rgba(211, 211, 211, 0.772);
+}
+
+footer {
+    background-color: #163767;
+    color: white;
+    height: auto;
+    width: 100%;
+    position: initial;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("img/efrei.png");
+    background-repeat: no-repeat;
+    background-position: center bottom 5px;
+    background-size: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+    margin: 5px;
+    padding-bottom: 40px;
+    padding-top: 5px;
+}
+
+footer a {
+    text-decoration: none;
+    color: rgb(190, 194, 255);
+}
+
+.indiceligne {
+    width: 10%;
+    margin: 0.5%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+.indice {
+    width: 8%;
+}
+
+.statut {
+    width: 4.8%;
+    background-color: white;
+    padding: 0.4%;
+    border-radius: 10px;
+    margin-left: -15px;
+}
+
+.indice_statut {
+    width: 10%;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: 1px solid  #163767;
+    padding: 10px 20px 10px 20px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #163767;
+    cursor: pointer;
+    color: white;
+}
+
+
+@media (min-width: 600px) {
+    body {
+        max-width: 28%;
+        display: block;
+        border: 2px solid #163767;
+        margin: 2%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
