@@ -1,8 +1,8 @@
 <?php
 // URL de l'API
-//$station = '481073';
+$station = '29903';
 $line = 'C01774';
-$url = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF%3AStopPoint%3AQ%3A".$station."%3A&LineRef=STIF%3ALine%3A%3A".$line."%3A";
+$url = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF%3AStopPoint%3AQ%3A35946%3A&LineRef=STIF%3ALine%3A%3AC01774%3A";
 
 // Header apiKey
 $header = array(
@@ -27,5 +27,6 @@ curl_close($curl);
 
 
 $api = json_decode($response,true);
+
 
 ?>

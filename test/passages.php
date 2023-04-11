@@ -18,19 +18,9 @@ if (isset($api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['Monitore
     if ($tempsrestant > 3600) {
         $tempsrestant = ltrim(gmdate("g", $tempsrestant), '0') . 'h ' . gmdate("i", $tempsrestant);
     } else {
-        if ($tempsrestant <= 1 or $tempsrestant == 0) {
-            //Afficher si le tram est at stop
-            if ($api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit'][0]['MonitoredVehicleJourney']['MonitoredCall']['VehicleAtStop'] = "true") {
-                $tempsrestant = "À quai";
+        if ($tempsrestant < 2) {
+                $tempsrestant = "Départ";
             } 
-            else {
-                //rien
-            }
-        }
-        //Afficher "Proche" si le temps est inférieur à 2 minutes
-        elseif ($tempsrestant <= 2) {
-                $tempsrestant = "Proche";
-        } 
         else {
             //Afficher le temps en minutes
             $tempsrestant = ltrim(gmdate("i", $tempsrestant), '0');
@@ -56,15 +46,12 @@ if (isset($api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['Monitore
         if ($tempsrestant2 < 1) {
             //Afficher si le tram est at stop
             if ($api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit'][1]['MonitoredVehicleJourney']['MonitoredCall']['VehicleAtStop'] = "true") {
-                $tempsrestant2 = "À quai";
+                $tempsrestant2 = "Départ";
             } 
             else {
                 //rien
             }
         }
-        elseif ($tempsrestant2 < 2) {
-                $tempsrestant2 = "Proche";
-        } 
         else {
             $tempsrestant2 = ltrim(gmdate("i", $tempsrestant2), '0');
         }
@@ -79,7 +66,7 @@ if (isset($api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['Monitore
 $tempsrestant = array($tempsrestant, $tempsrestant2);
 
 //afficher la destination
-$destination = $api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit'][0]['MonitoredVehicleJourney']['DirectionName'];
+$destination = $api['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit'][0]['MonitoredVehicleJourney']['DestinationName'];
 
 
 ?>

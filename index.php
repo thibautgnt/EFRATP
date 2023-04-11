@@ -16,7 +16,8 @@
 
 </head>
 <body onload=display_ct();>
-<?php include 'include/api.php' ?>
+<?php include 'include/api.php';
+include 'test/passages.php'; ?>
 
 <div style="height: 65px;"></div>    
 
@@ -109,9 +110,8 @@
             </div>
             <div class="destination">
                 <div class="panel"><p><?php
-                include 'test/passages.php';
                 
-                echo 'Porte de l\'Essonne';
+                echo $destination[0]['value'];
 
             ?></p></div>
             </div>
