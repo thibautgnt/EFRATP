@@ -252,7 +252,12 @@ display_c();
   <img src="img/t7.svg" id="indice_ligne">
   <?php
         
-                    echo "Trafic fluide sur l'ensemble de la ligne";
+        //Si il y a un message d'information sur la ligne
+        if (isset($trafic['Siri']['ServiceDelivery']['GeneralMessageDelivery'][0]['InfoMessage'][0]['Content']['Message'][0]['MessageText']['value']))
+            {
+                echo $trafic['Siri']['ServiceDelivery']['GeneralMessageDelivery'][0]['InfoMessage'][0]['Content']['Message'][0]['MessageText']['value'];
+            }
+        else {echo 'Trafic fluide sur l\'ensemble de la ligne';}
 
         ?>
         </p>
