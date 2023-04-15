@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-<meta http-equiv="refresh" content="60" >
+<!--<meta http-equiv="refresh" content="60" >-->
 
 </head>
 <body onload=display_ct();>
@@ -226,19 +226,7 @@ include 'test/passages.php'; ?>
         <p style="margin-left:33.5%">Prochains passages à l'arrêt "Auguste Delaune"</p>
     </div>
 </div>
-
-<script type="text/javascript"> 
-function display_ct() {
-var x = new Date()
-var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
-x1 = "<h3 class='time'>" + x.getHours( )+ ":" +  x.getMinutes() + '</h3>';
-document.getElementById('ct').innerHTML = x1;
-var refresh=1000; // Refresh rate in milli seconds
-mytime=setTimeout('display_ct()',refresh)
-display_c();
- }
-</script>
-
+</div>
 </body>
 <footer>
     <div class="infotrafic">
@@ -302,8 +290,33 @@ display_c();
 </div></div>
 
 
-        <span style="vertical-align: middle;display: flex;align-items: center;" id='ct'></span>
+        <!--<span style="vertical-align: middle;display: flex;align-items: center;" id=''></span>-->
+        <span style="vertical-align: middle;display: flex;align-items: center; color: white; font-size: 1.5vw;" id="time"></span>
     </div>
 </footer>
+
+
+
+    <script>
+      // Met à jour l'heure toutes les secondes
+      setInterval(updateTime, 1000);
+
+      // Fonction pour mettre à jour l'heure
+      function updateTime() {
+        // Obtient la date actuelle
+        const now = new Date();
+
+        // Obtient les heures, les minutes et les secondes
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        // Formatte l'heure, les minutes et les secondes pour avoir une chaîne au format "H:M:S"
+        const timeString = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+
+        // Affiche la chaîne dans l'élément span
+        document.getElementById("time").textContent = timeString;
+      }
+    </script>
 
 </html>

@@ -23,7 +23,7 @@ A web appplication aiming to display on school's TVs the next departures of publ
 
 | API       | Description                       |
 | :-------- | :-------------------------------- |
-| `IDFM`      | Next departures |
+| `PRIM IDFM`      | Next departures & Traffic information |
 | `SNCF - Transilien`      | Traffic information |
 | `RATP`      | Traffic information |
 
