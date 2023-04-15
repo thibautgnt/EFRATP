@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-<!--<meta http-equiv="refresh" content="60" >-->
+<meta http-equiv="refresh" content="45" >
 
 </head>
 <body onload=display_ct();>
